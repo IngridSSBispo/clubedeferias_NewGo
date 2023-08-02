@@ -12,6 +12,7 @@ public class Main {
 
         Socio socioUm = new Socio("Ingrid",12346789-2,1);
         Socio socioDois = new Socio("Caike",2222222-2,2);
+        
         System.out.println("O nome do socio é: " + socioUm.getNome());
 
         CadastroDAO dao = new CadastroDAO();
