@@ -3,44 +3,42 @@ package main;
 import main.dominio.Socio;
 import main.model.CadastroDAO;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        Scanner scanner = new Scanner(System.in);
+        int opcao = 0;
 
-        // Testando cadastro sócio
+        System.out.println("Menu: ");
+        System.out.println("1. Cadastrar novo sócio");
+        System.out.println("2. Consultar sócio");
+        System.out.println("3. Atualizar cadastro do sócio");
+        System.out.println("4.Excluir cadastro do sócio");
+        System.out.println("5. Sair");
 
-        Socio socioUm = new Socio("Ingrid",12346789-2,1);
-        Socio socioDois = new Socio("Caike",2222222-2,2);
-        
-        System.out.println("O nome do socio é: " + socioUm.getNome());
+        opcao = scanner.nextInt();
 
-        CadastroDAO dao = new CadastroDAO();
-        dao.create(socioUm);
-        dao.create(socioDois);
+        switch (opcao) {
+            case 1:
+                System.out.println("Cadastro:");
+                break;
+            case 2:
+                System.out.println("Consulta");
+                break;
+            case 3:
+                System.out.println("Atualização");
+                break;
+            case 4:
+                System.out.println("Exclusão");
+                break;
 
-      /*  List<Socio> socios = new ArrayList<>();
-
-        // Adicionar sócios à lista
-        socios.add(new Socio("João Silva", 123456789, 1001));
-        socios.add(new Socio("Maria Santos", 987654321, 1002));
-        socios.add(new Socio("Paulo Souza", 654321987, 1003));
-
-        // Imprimir a lista de sócios
-        for (Socio socio : socios) {
-            System.out.println("Nome: " + socio.getNome());
-            System.out.println("CPF: " + socio.getCPF());
-            System.out.println("Número da Carteirinha: " + socio.getNumeroCarteirinha());
-            System.out.println("---------------------");
-
+            default:
+                System.out.println("Sair");
 
         }
 
-       */
     }
 }
-
-
