@@ -11,7 +11,7 @@ public class CadastroDAO implements InterfaceDAO {
     @Override
     public void create(Socio socio) throws IOException {
         System.out.println("nome: " + socio.getNome());
-        System.out.println("CPF: " + socio.getCPF());
+        System.out.println("CPF: " + socio.getNumeroCPF());
         System.out.println("Nº da carteirinha: " + socio.getNumeroCarteirinha());
 
         System.out.println("Cadastro realizado com sucesso!");
@@ -21,7 +21,7 @@ public class CadastroDAO implements InterfaceDAO {
 
         Arquivo arquivo = new Arquivo();
         String content = "";
-        content = "Nome: " + socio.getNome() + " | CPF: " + socio.getCPF() + " | Nª carteirinha: " + socio.getNumeroCarteirinha();
+        content = "Nome: " + socio.getNome() + " | CPF: " + socio.getNumeroCPF() + " | Nª carteirinha: " + socio.getNumeroCarteirinha();
         arquivo.create("C:\\Users\\Ingrid Bispo\\Desktop\\arquivo.txt", content);
 
 
