@@ -2,10 +2,11 @@ package main.model;
 
 import main.dominio.Socio;
 import main.io.Arquivo;
-import java.io.IOException;
-import java.util.Scanner;
 
-public class CadastroDAO implements InterfaceDAO{
+import java.io.IOException;
+import java.util.Arrays;
+
+public class CadastroDAO implements InterfaceDAO {
 
     @Override
     public void create(Socio socio) throws IOException {
@@ -37,6 +38,29 @@ public class CadastroDAO implements InterfaceDAO{
 
     }
 
+    public void readByCPF(String path, String name, String numeroCPF) {
+        Arquivo arquivo = new Arquivo();
+        String conteudo = arquivo.read(path, name);
+
+        //Para separar as linhas do arquivo com ";"
+        String[] textoSeparado = conteudo.split(";");
+        String socio = "";
+
+        for (String linha : textoSeparado) {
+            if (linha.contains(numeroCPF)) {
+                socio = linha;
+            }
+        }
+
+        if (socio != "") {
+            System.out.print("Sócio encontrado: " + socio);
+        } else {
+            System.out.println("Sócio não encontrado");
+        }
+
+    }
+
+
     @Override
     public void update(Socio socio) {
 
@@ -44,7 +68,6 @@ public class CadastroDAO implements InterfaceDAO{
 
     @Override
     public void delete(Socio socio) {
-
 
 
     }
