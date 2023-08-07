@@ -12,6 +12,9 @@ public class Socio {
         this.numeroCarteirinha = numeroCarteirinha;
     }
 
+    public Socio(String nome, String numeroCPF, int numeroCarteirinha) {
+    }
+
     public String getNome() {
         return nome;
     }
