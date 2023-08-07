@@ -54,7 +54,7 @@ public class Main {
         String nome = scanner.nextLine();
         System.out.print("Digite o CPF do sócio: ");
         String numeroCPF = scanner.next();
-        Socio novoSocio = new Socio(nome, numeroCPF, 1);
+        Socio novoSocio = new Socio(nome, numeroCPF);
         CadastroDAO cadastroDAO = new CadastroDAO();
         cadastroDAO.create(novoSocio);
 
