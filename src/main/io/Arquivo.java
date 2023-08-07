@@ -9,30 +9,30 @@ import java.util.Scanner;
 
 /**
 * Responsável por manipular os arquivos de texto*
-* */
+**/
 public class Arquivo {
 
 
     public void create(String path, String content) throws IOException {
         FileWriter escritor = new FileWriter(path, true);
         escritor.write(content);
-        escritor.write("\n");
+        escritor.write("; \n");
         escritor.close();
     }
 
-    public void read(String path, String file) {
+    public String read(String path, String file) {
 
         //Abrir arquivo e imprimir cada uma das linhas
         File leitor = new File(path+file);
         leitor.setReadOnly();
 
         Scanner sc = null;
-        String line ="";
+        String conteudo ="";
         try {
             sc = new Scanner(leitor);
             while (sc.hasNextLine()) {
-                line += sc.nextLine();
-                line += "\n";
+                conteudo += sc.nextLine();
+                conteudo += "\n";
             }
 
 
@@ -45,7 +45,8 @@ public class Arquivo {
             }
         }
 
-        System.out.println(line);
+//        System.out.println( conteudo);
+        return conteudo;
 
     }
 }
