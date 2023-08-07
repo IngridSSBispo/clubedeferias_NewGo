@@ -1,18 +1,21 @@
 package main.dominio;
 
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class Socio {
 
     private String nome;
-    private int CPF;
+    private String numeroCPF;
     private int numeroCarteirinha;
+    private static Set<Integer> numerosCarteirinhaGerados = new HashSet<>();
 
-    public Socio(String nome, int CPF, int numeroCarteirinha) {
+
+    public Socio(String nome, String numeroCPF) {
         this.nome = nome;
-        this.CPF = CPF;
-        this.numeroCarteirinha = numeroCarteirinha;
-    }
-
-    public Socio(String nome, String numeroCPF, int numeroCarteirinha) {
+        this.numeroCPF = numeroCPF;
+        this.numeroCarteirinha = gerarNumeroCarteirinhaUnico();
     }
 
     public String getNome() {
@@ -23,12 +26,12 @@ public class Socio {
         this.nome = nome;
     }
 
-    public int getCPF() {
-        return CPF;
+    public String getNumeroCPF() {
+        return numeroCPF;
     }
 
-    public void setCPF(int CPF) {
-        this.CPF = CPF;
+    public void setNumeroCPF(String numeroCPF) {
+        this.numeroCPF = numeroCPF;
     }
 
     public int getNumeroCarteirinha() {
@@ -39,6 +42,17 @@ public class Socio {
         this.numeroCarteirinha = numeroCarteirinha;
     }
 
+
+    private int gerarNumeroCarteirinhaUnico() {
+        Random random = new Random();
+        int numero;
+        do {
+            numero = random.nextInt(1000000) + 1; // Gera um número entre 1 e 1.000.000
+        } while (numerosCarteirinhaGerados.contains(numero));
+
+        numerosCarteirinhaGerados.add(numero);
+        return numero;
+    }
 
     }
 
