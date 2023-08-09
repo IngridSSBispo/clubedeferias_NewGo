@@ -1,10 +1,7 @@
 package main.io;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -24,7 +21,7 @@ public class Arquivo {
 
         //Abrir arquivo e imprimir cada uma das linhas
         File leitor = new File(path+file);
-        leitor.setReadOnly();
+//        leitor.setReadOnly();
 
         Scanner sc = null;
         String conteudo ="";
@@ -45,8 +42,21 @@ public class Arquivo {
             }
         }
 
-//        System.out.println( conteudo);
+
         return conteudo;
 
     }
+
+    public void delete(String path,String file){
+        File myObj = new File(path+file);
+        if (myObj.delete()) {
+            System.out.println("Arquivo apagado: " + myObj.getName());
+        } else {
+            System.out.println("Falha em apagar o arquivo");
+        }
+
+    }
+
+
+
 }
