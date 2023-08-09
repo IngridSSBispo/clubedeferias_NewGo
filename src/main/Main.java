@@ -1,8 +1,9 @@
 package main;
 
+import com.sun.source.tree.CaseLabelTree;
 import main.dominio.Socio;
+import main.io.Arquivo;
 import main.model.CadastroDAO;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -38,7 +39,8 @@ public class Main {
                 System.out.println("Atualização");
                 break;
             case 4:
-                System.out.println("Exclusão");
+                System.out.println("Excluir cadastro");
+                apaga();
                 break;
 
             default:
@@ -63,7 +65,7 @@ public class Main {
 
     public static void consulta() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Digite o CPF do sócio:");
+        System.out.print("Digite o CPF do sócio:");
         String numeroCPF = scanner.next();
         CadastroDAO cadastroDAO = new CadastroDAO();
         cadastroDAO.readByCPF("C:\\Users\\Ingrid Bispo\\Desktop\\", "arquivo.txt", numeroCPF);
@@ -71,4 +73,17 @@ public class Main {
 
     }
 
+    public static void atualiza (){
+
+    }
+
+    public static void apaga() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o número da carteirinha: ");
+        int numeroCarteirinha = scanner.nextInt();
+        CadastroDAO cadastroDAO = new CadastroDAO();
+        cadastroDAO.deleteByNrCard(numeroCarteirinha,"C:\\Users\\Ingrid Bispo\\Desktop\\","arquivo.txt");
+
+
+    }
 }
