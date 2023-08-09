@@ -1,14 +1,14 @@
 package main.io;
 
+import main.model.InterfaceDAO;
 
 import java.io.*;
 import java.util.Scanner;
 
 /**
-* Responsável por manipular os arquivos de texto*
-**/
+ * Responsável por manipular os arquivos de texto*
+ **/
 public class Arquivo {
-
 
     public void create(String path, String content) throws IOException {
         FileWriter escritor = new FileWriter(path, true);
@@ -20,11 +20,10 @@ public class Arquivo {
     public String read(String path, String file) {
 
         //Abrir arquivo e imprimir cada uma das linhas
-        File leitor = new File(path+file);
-//        leitor.setReadOnly();
+        File leitor = new File(path + file);
 
         Scanner sc = null;
-        String conteudo ="";
+        String conteudo = "";
         try {
             sc = new Scanner(leitor);
             while (sc.hasNextLine()) {
@@ -47,8 +46,8 @@ public class Arquivo {
 
     }
 
-    public void delete(String path,String file){
-        File myObj = new File(path+file);
+    public void delete(String path, String file) {
+        File myObj = new File(path + file);
         if (myObj.delete()) {
             System.out.println("Arquivo apagado: " + myObj.getName());
         } else {
@@ -57,6 +56,8 @@ public class Arquivo {
 
     }
 
+    public void update(String path, String file) {
 
+    }
 
 }
