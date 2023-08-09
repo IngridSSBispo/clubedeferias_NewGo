@@ -4,6 +4,7 @@ import com.sun.source.tree.CaseLabelTree;
 import main.dominio.Socio;
 import main.io.Arquivo;
 import main.model.CadastroDAO;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -37,6 +38,7 @@ public class Main {
                 break;
             case 3:
                 System.out.println("Atualização");
+                atualiza();
                 break;
             case 4:
                 System.out.println("Excluir cadastro");
@@ -73,8 +75,23 @@ public class Main {
 
     }
 
-    public static void atualiza (){
+    public static void atualiza() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Digite o número da carteirinha: ");
+        int numeroCarteirinha = scanner.nextInt();
+        System.out.print("Digite o nome do sócio:");
+        String nome = scanner.next();
+        System.out.print("Digite o CPF do sócio: ");
+        String numeroCPF = scanner.next();
+        Socio socioAtualizado = new Socio(nome, numeroCPF);
+        CadastroDAO cadastroDAO = new CadastroDAO();
 
+        cadastroDAO.atualizaByNrCard(
+                numeroCarteirinha,
+                "C:\\Users\\Ingrid Bispo\\Desktop\\",
+                "arquivo.txt",
+                nome,
+                numeroCPF);
     }
 
     public static void apaga() throws IOException {
@@ -82,7 +99,7 @@ public class Main {
         System.out.print("Digite o número da carteirinha: ");
         int numeroCarteirinha = scanner.nextInt();
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.deleteByNrCard(numeroCarteirinha,"C:\\Users\\Ingrid Bispo\\Desktop\\","arquivo.txt");
+        cadastroDAO.deleteByNrCard(numeroCarteirinha, "C:\\Users\\Ingrid Bispo\\Desktop\\", "arquivo.txt");
 
 
     }
