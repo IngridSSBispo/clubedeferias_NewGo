@@ -8,7 +8,7 @@ public class TesteReadFile {
         String path = "C:\\Users\\Ingrid Bispo\\Desktop\\";
         String name = "arquivo.txt";
 
-        dao.read(path, name);
+        dao.readByCPF("C:\\Users\\Ingrid Bispo\\Desktop\\","arquivo.txt","1555555-5");
 
 
     }
