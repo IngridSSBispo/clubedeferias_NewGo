@@ -39,8 +39,12 @@ public class CadastroDAO implements InterfaceDAO {
 
     }
 
-
-    public void readByCPF(String numeroCPF) {
+    /**
+     *  procura de acordo com o parametro informado
+     * @param info qualquer informacao que esteja contida no arquivo de texto
+     *  **/
+    public boolean findByInfo(String info) {
+        boolean resultado;
         Arquivo arquivo = new Arquivo();
         String conteudo = arquivo.read(path, fileName);
 
@@ -49,16 +53,19 @@ public class CadastroDAO implements InterfaceDAO {
         String socio = "";
 
         for (String linha : textoSeparado) {
-            if (linha.contains(numeroCPF)) {
+            if (linha.contains(info)) {
                 socio = linha;
             }
         }
 
         if (socio != "") {
             System.out.print("Sócio encontrado: " + socio);
+            resultado =true;
         } else {
             System.out.println("Sócio não encontrado");
+            resultado = false;
         }
+        return resultado;
 
     }
 
@@ -88,14 +95,6 @@ public class CadastroDAO implements InterfaceDAO {
 
     }
 
-    /*public void clearFile(String path, String file) throws IOException {
-        Arquivo arquivo = new Arquivo();
-
-        PrintWriter writer = new PrintWriter(new FileWriter(path + file));
-        writer.print("");
-        writer.close();
-
-    }*/
 
     public void atualizaByNrCard(int numeroCarteirinha, String path, String file, String nmSocio,String cpfSocio) throws IOException {
         Arquivo arquivo = new Arquivo();
