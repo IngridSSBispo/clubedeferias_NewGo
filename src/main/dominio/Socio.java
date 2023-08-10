@@ -14,7 +14,11 @@ public class Socio {
 
     public Socio(String nome, String numeroCPF) {
         this.nome = nome;
-        this.numeroCPF = numeroCPF;
+        if (isValidCPF(numeroCPF)) {
+            this.numeroCPF = numeroCPF;
+        } else {
+            throw new IllegalArgumentException("CPF inválido");
+        }
         this.numeroCarteirinha = gerarNumeroCarteirinhaUnico();
     }
 
@@ -34,6 +38,7 @@ public class Socio {
         this.numeroCPF = numeroCPF;
     }
 
+
     public int getNumeroCarteirinha() {
         return numeroCarteirinha;
     }
@@ -47,12 +52,23 @@ public class Socio {
         Random random = new Random();
         int numero;
         do {
-            numero = random.nextInt(1000000) + 1; // Gera um número entre 1 e 1.000.000
+            numero = random.nextInt(100000) + 1; // Gera um número entre 1 e 100000
         } while (numerosCarteirinhaGerados.contains(numero));
 
         numerosCarteirinhaGerados.add(numero);
         return numero;
     }
 
+    private boolean isValidCPF(String numeroCPF) {
+
+        // Remove caracteres não numéricos
+        numeroCPF = numeroCPF.replaceAll("[^0-9]", "");
+
+        if (numeroCPF.length() != 11) {
+            return false;
+        }
+
+        return true;
     }
+}
 
