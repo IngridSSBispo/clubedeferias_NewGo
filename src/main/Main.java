@@ -1,6 +1,5 @@
 package main;
 
-import com.sun.source.tree.CaseLabelTree;
 import main.dominio.Socio;
 import main.model.CadastroDAO;
 
@@ -69,7 +68,7 @@ public class Main {
         System.out.print("Digite o nome ou CPF do sócio: ");
         String numeroCPF = scanner.next();
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.readByCPF( numeroCPF);
+        cadastroDAO.findByInfo( numeroCPF);
 
 
     }
@@ -82,21 +81,26 @@ public class Main {
         scanner.nextLine();
         //mostrar o sócio que será atualizado aqui
         CadastroDAO dao = new CadastroDAO();
-        //dao.readByCPF();
+        String nr = String.valueOf(numeroCarteirinha);
 
-        System.out.print("Digite o nome do sócio: ");
-        String nome = scanner.nextLine();
-        System.out.print("Digite o CPF do sócio: ");
-        String numeroCPF = scanner.nextLine();
-        Socio socioAtualizado = new Socio(nome, numeroCPF);
-        CadastroDAO cadastroDAO = new CadastroDAO();
+        boolean resultado = dao.findByInfo(nr);
+        if (resultado){
 
-        cadastroDAO.atualizaByNrCard(
-                numeroCarteirinha,
-                "C:\\Users\\Ingrid Bispo\\Desktop\\",
-                "arquivo.txt",
-                nome,
-                numeroCPF);
+            System.out.print("\nDigite o novo nome do sócio: ");
+            String nome = scanner.nextLine();
+            System.out.print("Digite o novo CPF do sócio: ");
+            String numeroCPF = scanner.nextLine();
+            CadastroDAO cadastroDAO = new CadastroDAO();
+
+            cadastroDAO.atualizaByNrCard(
+                    numeroCarteirinha,
+                    "C:\\Users\\Ingrid Bispo\\Desktop\\",
+                    "arquivo.txt",
+                    nome,
+                    numeroCPF);
+
+        }
+
     }
 
     public static void apaga() throws IOException {
