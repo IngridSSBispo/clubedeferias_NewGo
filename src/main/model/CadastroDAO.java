@@ -6,6 +6,9 @@ import java.util.ArrayList;
 
 public class CadastroDAO implements InterfaceDAO {
 
+    String path = "C:\\Users\\Ingrid Bispo\\Desktop\\";
+    String fileName = "arquivo.txt";
+
     @Override
     public void create(Socio socio) throws IOException {
         System.out.println("nome: " + socio.getNome());
@@ -20,7 +23,7 @@ public class CadastroDAO implements InterfaceDAO {
         Arquivo arquivo = new Arquivo();
         String content = "";
         content = "Nome: " + socio.getNome() + " | CPF: " + socio.getNumeroCPF() + " | Nª carteirinha: " + socio.getNumeroCarteirinha();
-        arquivo.create("C:\\Users\\Ingrid Bispo\\Desktop\\arquivo.txt", content);
+        arquivo.create(path+fileName, content);
 
 
     }
@@ -37,9 +40,9 @@ public class CadastroDAO implements InterfaceDAO {
     }
 
 
-    public void readByCPF(String path, String name, String numeroCPF) {
+    public void readByCPF(String numeroCPF) {
         Arquivo arquivo = new Arquivo();
-        String conteudo = arquivo.read(path, name);
+        String conteudo = arquivo.read(path, fileName);
 
         //Para separar as linhas do arquivo com ";"
         String[] textoSeparado = conteudo.split(";");
@@ -76,8 +79,6 @@ public class CadastroDAO implements InterfaceDAO {
 
 
         System.out.println(newContentFile);
-
-        //limpar arquivo
 
         arquivo.delete(path, file);
 
