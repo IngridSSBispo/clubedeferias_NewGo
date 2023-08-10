@@ -84,7 +84,6 @@ public class CadastroDAO implements InterfaceDAO {
             }
         }
 
-
         System.out.println(newContentFile);
 
         arquivo.delete(path, file);
