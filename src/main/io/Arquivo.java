@@ -48,9 +48,8 @@ public class Arquivo {
 
     public void delete(String path, String file) {
         File myObj = new File(path + file);
-        if (myObj.delete()) {
-            System.out.println("Arquivo apagado: " + myObj.getName());
-        } else {
+        if (!myObj.delete()) {
+
             System.out.println("Falha em apagar o arquivo");
         }
 
