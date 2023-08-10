@@ -2,7 +2,6 @@ package main;
 
 import com.sun.source.tree.CaseLabelTree;
 import main.dominio.Socio;
-import main.io.Arquivo;
 import main.model.CadastroDAO;
 
 import java.io.IOException;
@@ -67,22 +66,28 @@ public class Main {
 
     public static void consulta() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o CPF do sócio:");
+        System.out.print("Digite o nome ou CPF do sócio: ");
         String numeroCPF = scanner.next();
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.readByCPF("C:\\Users\\Ingrid Bispo\\Desktop\\", "arquivo.txt", numeroCPF);
+        cadastroDAO.readByCPF( numeroCPF);
 
 
     }
 
     public static void atualiza() throws IOException {
         Scanner scanner = new Scanner(System.in);
+
         System.out.print("Digite o número da carteirinha: ");
         int numeroCarteirinha = scanner.nextInt();
-        System.out.print("Digite o nome do sócio:");
-        String nome = scanner.next();
+        scanner.nextLine();
+        //mostrar o sócio que será atualizado aqui
+        CadastroDAO dao = new CadastroDAO();
+        //dao.readByCPF();
+
+        System.out.print("Digite o nome do sócio: ");
+        String nome = scanner.nextLine();
         System.out.print("Digite o CPF do sócio: ");
-        String numeroCPF = scanner.next();
+        String numeroCPF = scanner.nextLine();
         Socio socioAtualizado = new Socio(nome, numeroCPF);
         CadastroDAO cadastroDAO = new CadastroDAO();
 
