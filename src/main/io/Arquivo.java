@@ -1,7 +1,5 @@
 package main.io;
 
-import main.model.InterfaceDAO;
-
 import java.io.*;
 import java.util.Scanner;
 

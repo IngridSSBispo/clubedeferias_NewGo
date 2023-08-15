@@ -12,7 +12,7 @@ public class TesteUpdateFile {
         CadastroDAO dao = new CadastroDAO();
         dao.atualizaByNrCard(
                 905321,
-                "C:\\Users\\Ingrid Bispo\\Desktop\\",
+                "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\",
                 "arquivo.txt",
                 "Vivian",
                 "789456");

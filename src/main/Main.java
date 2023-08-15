@@ -1,8 +1,6 @@
 package main;
 import main.dominio.Socio;
 import main.model.CadastroDAO;
-
-import java.awt.*;
 import java.io.IOException;
 import java.util.Scanner;
 

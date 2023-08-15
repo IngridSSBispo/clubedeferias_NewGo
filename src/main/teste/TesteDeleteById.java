@@ -7,6 +7,6 @@ import java.io.IOException;
 public class TesteDeleteById {
     public static void main(String[] args) throws IOException {
         CadastroDAO dao = new CadastroDAO();
-        dao.deleteByNrCard(788040, "C:\\Users\\Ingrid Bispo\\Desktop\\", "arquivo.txt");
+        dao.deleteByNrCard(788040, "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\", "arquivo.txt");
     }
 }
