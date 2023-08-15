@@ -69,7 +69,9 @@ public class Main {
         String nome = scanner.nextLine();
         System.out.print("Digite o CPF do sócio: ");
         String numeroCPF = scanner.next();
-        Socio novoSocio = new Socio(nome, numeroCPF);
+        System.out.print("Digite o RG do sócio:  ");
+        String RG = scanner.next();
+        Socio novoSocio = new Socio(nome, numeroCPF,RG);
         CadastroDAO cadastroDAO = new CadastroDAO();
         cadastroDAO.create(novoSocio);
 
@@ -103,6 +105,8 @@ public class Main {
             String nome = scanner.nextLine();
             System.out.print("Digite o novo CPF do sócio: ");
             String numeroCPF = scanner.nextLine();
+            System.out.print("Digite o novo RG do sócio: ");
+            String RG = scanner.nextLine();
             CadastroDAO cadastroDAO = new CadastroDAO();
 
             cadastroDAO.atualizaByNrCard(
