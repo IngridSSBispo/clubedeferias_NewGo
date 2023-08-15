@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static String MENU = "Menu: ";
+
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
@@ -80,7 +81,7 @@ public class Main {
         System.out.print("Digite o nome ou CPF do sócio: ");
         String numeroCPF = scanner.next();
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.findByInfo( numeroCPF);
+        cadastroDAO.findByInfo(numeroCPF);
 
 
     }
@@ -96,7 +97,7 @@ public class Main {
         String nr = String.valueOf(numeroCarteirinha);
 
         boolean resultado = dao.findByInfo(nr);
-        if (resultado){
+        if (resultado) {
 
             System.out.print("\nDigite o novo nome do sócio: ");
             String nome = scanner.nextLine();
