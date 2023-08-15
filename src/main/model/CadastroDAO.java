@@ -50,7 +50,7 @@ public class CadastroDAO {
      *
      * @param info qualquer informacao que esteja contida no arquivo de texto
      **/
-    public boolean findByInfo(String info) {
+    public boolean findByInfo(String info, String chave) {
         boolean resultado;
         Arquivo arquivo = new Arquivo();
         String conteudo = arquivo.read(path, fileName);
@@ -58,9 +58,18 @@ public class CadastroDAO {
         //Para separar as linhas do arquivo com ";"
         String[] textoSeparado = conteudo.split(";");
         String socio = "";
+        String busca = "";
+        if(chave.equals("cpf")){
+            busca = "CPF: " + info;
+        } else if(chave.equals("carteirinha")){
+            busca = "Nª carteirinha: " + info;
+        } else {
+            busca = "asdasd";
+        }
 
+        System.out.println("-------------"+ busca);
         for (String linha : textoSeparado) {
-            if (linha.contains(info)) {
+            if (linha.contains(busca)) {
                 socio = linha;
             }
         }
@@ -121,7 +130,7 @@ public class CadastroDAO {
         String nrCart = String.valueOf(numeroCarteirinha);
 
         for (String linha : textoSeparado) {
-            if (linha.contains(nrCart)) {
+            if (linha.contains(" Nª carteirinha: " + nrCart)) {
                 // Atualizar os dados do sócio na linha correspondente
                 String novoConteudo = "Nome: " + nmSocio + " | CPF: " + cpfSocio + "| Nª carteirinha: " + numeroCarteirinha;
 

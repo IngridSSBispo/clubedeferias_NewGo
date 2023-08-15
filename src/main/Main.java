@@ -81,7 +81,7 @@ public class Main {
         System.out.print("Digite o nome ou CPF do sócio: ");
         String numeroCPF = scanner.next();
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.findByInfo(numeroCPF);
+        cadastroDAO.findByInfo(numeroCPF, "cpf");
 
 
     }
@@ -96,7 +96,7 @@ public class Main {
         CadastroDAO dao = new CadastroDAO();
         String nr = String.valueOf(numeroCarteirinha);
 
-        boolean resultado = dao.findByInfo(nr);
+        boolean resultado = dao.findByInfo(nr, "carteirinha");
         if (resultado) {
 
             System.out.print("\nDigite o novo nome do sócio: ");
