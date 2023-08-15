@@ -1,5 +1,4 @@
 package main.io;
-
 import java.io.*;
 import java.util.Scanner;
 
@@ -14,6 +13,7 @@ public class Arquivo {
         escritor.write("; \n");
         escritor.close();
     }
+
 
     public String read(String path, String file) {
 
@@ -52,9 +52,4 @@ public class Arquivo {
         }
 
     }
-
-    public void update(String path, String file) {
-
-    }
-
 }
