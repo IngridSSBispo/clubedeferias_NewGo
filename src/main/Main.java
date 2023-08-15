@@ -1,51 +1,67 @@
 package main;
 import main.dominio.Socio;
 import main.model.CadastroDAO;
+
+import java.awt.*;
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-
+    public static String MENU = "Menu: ";
     public static void main(String[] args) throws IOException {
 
         Scanner scanner = new Scanner(System.in);
+        boolean aux = true;
         int opcao = 0;
 
-        System.out.println("Menu: ");
-        System.out.println("1. Cadastrar novo sócio");
-        System.out.println("2. Consultar sócio");
-        System.out.println("3. Atualizar cadastro do sócio");
-        System.out.println("4.Excluir cadastro do sócio");
-        System.out.println("5. Sair");
+        while (aux) {
 
-        System.out.print("Digite a opção: ");
+            System.out.println(MENU);
+            System.out.println("1. Cadastrar novo sócio");
+            System.out.println("2. Consultar sócio");
+            System.out.println("3. Atualizar cadastro do sócio");
+            System.out.println("4.Excluir cadastro do sócio");
+            System.out.println("0. Sair");
 
-        opcao = scanner.nextInt();
+            System.out.print("Digite a opção: ");
+
+            opcao = scanner.nextInt();
 
 
-        switch (opcao) {
-            case 1:
-                System.out.println("Cadastrando...");
-                cadastro();
-                break;
-            case 2:
-                System.out.println("Consultando...");
-                consulta();
-                break;
-            case 3:
-                System.out.println("Atualização");
-                atualiza();
-                break;
-            case 4:
-                System.out.println("Excluir cadastro");
-                apaga();
-                break;
+            switch (opcao) {
 
-            default:
-                System.out.println("Sair");
+                case 0:
+                    System.out.printf("Saindo");
+                    aux = false;
+                    break;
 
+                case 1:
+                    System.out.println("Cadastrando...");
+                    cadastro();
+                    break;
+                case 2:
+                    System.out.println("Consultando...");
+                    consulta();
+                    break;
+                case 3:
+                    System.out.println("Atualização");
+                    atualiza();
+                    break;
+                case 4:
+                    System.out.println("Excluir cadastro");
+                    apaga();
+                    break;
+
+                default:
+                    System.out.println("---------------------------------");
+                    System.out.println("Opção inválida");
+                    System.out.println("---------------------------------");
+
+                    break;
+
+
+            }
         }
-
     }
 
     public static void cadastro() throws IOException {
@@ -92,7 +108,7 @@ public class Main {
 
             cadastroDAO.atualizaByNrCard(
                     numeroCarteirinha,
-                    "C:\\Users\\Ingrid Bispo\\Desktop\\",
+                    "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\",
                     "arquivo.txt",
                     nome,
                     numeroCPF);
@@ -106,7 +122,7 @@ public class Main {
         System.out.print("Digite o número da carteirinha: ");
         int numeroCarteirinha = scanner.nextInt();
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.deleteByNrCard(numeroCarteirinha, "C:\\Users\\Ingrid Bispo\\Desktop\\", "arquivo.txt");
+        cadastroDAO.deleteByNrCard(numeroCarteirinha, "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\", "arquivo.txt");
 
 
     }
