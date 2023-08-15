@@ -7,11 +7,14 @@ public class Socio {
     private String nome;
     private String numeroCPF;
     private int numeroCarteirinha;
+
+    private String RG;
     private static Set<Integer> numerosCarteirinhaGerados = new HashSet<>();
 
 
-    public Socio(String nome, String numeroCPF) {
+    public Socio(String nome, String numeroCPF,String RG) {
         this.nome = nome;
+        this.RG = RG;
         if (isValidCPF(numeroCPF)) {
             this.numeroCPF = numeroCPF;
         } else {
@@ -31,6 +34,15 @@ public class Socio {
     public String getNumeroCPF() {
         return numeroCPF;
     }
+
+    public String getNumeroRG() {
+        return RG;
+    }
+
+    public void setNumeroRG(String numeroRG) {
+        this.RG = numeroRG;
+    }
+
 
 
     private boolean isValidCPF(String numeroCPF) {
