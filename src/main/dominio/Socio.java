@@ -1,4 +1,5 @@
 package main.dominio;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -6,13 +7,9 @@ public class Socio {
 
     private String nome;
     private String numeroCPF;
-    private int numeroCarteirinha;
-
     private String RG;
-    private static Set<Integer> numerosCarteirinhaGerados = new HashSet<>();
 
-
-    public Socio(String nome, String numeroCPF,String RG) {
+    public Socio(String nome, String numeroCPF, String RG) {
         this.nome = nome;
         this.RG = RG;
         if (isValidCPF(numeroCPF)) {
@@ -42,7 +39,6 @@ public class Socio {
     public void setNumeroRG(String numeroRG) {
         this.RG = numeroRG;
     }
-
 
 
     private boolean isValidCPF(String numeroCPF) {
