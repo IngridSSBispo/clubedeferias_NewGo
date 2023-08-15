@@ -11,7 +11,7 @@ public class CadastroDAO {
     public void create(Socio socio) throws IOException {
         System.out.println("nome: " + socio.getNome());
         System.out.println("CPF: " + socio.getNumeroCPF());
-//      System.out.println("Nº da carteirinha: " + socio.getNumeroCarteirinha());
+        System.out.println("Nº RG: " + socio.getNumeroRG());
 
 
         System.out.println("Cadastro realizado com sucesso!");
@@ -21,7 +21,10 @@ public class CadastroDAO {
 
         Arquivo arquivo = new Arquivo();
         String content = "";
-        content = "Nome: " + socio.getNome() + " | CPF: " + socio.getNumeroCPF() + " | Nª carteirinha: " + getNextID();
+        content = "Nome: " + socio.getNome()
+                + " | RG: "   +socio.getNumeroRG()
+                + " | CPF: " + socio.getNumeroCPF()
+                + " | Nª carteirinha: " + getNextID() ;
         System.out.println("-------------" + content);
         arquivo.create(path + fileName, content);
 
