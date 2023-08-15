@@ -1,7 +1,5 @@
 package main.dominio;
-
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 public class Socio {
@@ -19,7 +17,7 @@ public class Socio {
         } else {
             throw new IllegalArgumentException("CPF inválido");
         }
-        this.numeroCarteirinha = gerarNumeroCarteirinhaUnico();
+
     }
 
     public String getNome() {
@@ -34,30 +32,6 @@ public class Socio {
         return numeroCPF;
     }
 
-    public void setNumeroCPF(String numeroCPF) {
-        this.numeroCPF = numeroCPF;
-    }
-
-
-    public int getNumeroCarteirinha() {
-        return numeroCarteirinha;
-    }
-
-    public void setNumeroCarteirinha(int numeroCarteirinha) {
-        this.numeroCarteirinha = numeroCarteirinha;
-    }
-
-
-    private int gerarNumeroCarteirinhaUnico() {
-        Random random = new Random();
-        int numero;
-        do {
-            numero = random.nextInt(100000) + 1; // Gera um número entre 1 e 100000
-        } while (numerosCarteirinhaGerados.contains(numero));
-
-        numerosCarteirinhaGerados.add(numero);
-        return numero;
-    }
 
     private boolean isValidCPF(String numeroCPF) {
 
