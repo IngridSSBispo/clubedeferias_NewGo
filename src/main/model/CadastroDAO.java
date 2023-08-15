@@ -1,8 +1,11 @@
 package main.model;
+
 import main.dominio.Socio;
 import main.io.Arquivo;
+
 import java.io.*;
 import java.util.ArrayList;
+
 public class CadastroDAO {
 
     String path = "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\";
@@ -22,9 +25,9 @@ public class CadastroDAO {
         Arquivo arquivo = new Arquivo();
         String content = "";
         content = "Nome: " + socio.getNome()
-                + " | RG: "   +socio.getNumeroRG()
+                + " | RG: " + socio.getNumeroRG()
                 + " | CPF: " + socio.getNumeroCPF()
-                + " | Nª carteirinha: " + getNextID() ;
+                + " | Nª carteirinha: " + getNextID();
         System.out.println("-------------" + content);
         arquivo.create(path + fileName, content);
 
@@ -42,7 +45,6 @@ public class CadastroDAO {
         for (String linha : textoSeparado) {
             resultado++;
         }
-
 
         return resultado;
 
@@ -62,15 +64,18 @@ public class CadastroDAO {
         String[] textoSeparado = conteudo.split(";");
         String socio = "";
         String busca = "";
-        if(chave.equals("cpf")){
+        if (chave.equals("cpf")) {
             busca = "CPF: " + info;
-        } else if(chave.equals("carteirinha")){
+        } else if (chave.equals("carteirinha")) {
             busca = "Nª carteirinha: " + info;
+        } else if (chave.equals("RG")) {
+            busca = "RG: " + info;
+        } else if (chave.equals("nome")) {
+            busca = "Nome: " + info;
         } else {
             busca = "asdasd";
         }
 
-        System.out.println("-------------"+ busca);
         for (String linha : textoSeparado) {
             if (linha.contains(busca)) {
                 socio = linha;
@@ -78,10 +83,9 @@ public class CadastroDAO {
         }
 
         if (socio != "") {
-            System.out.print("Sócio encontrado: " + socio);
+            System.out.print("Sócio encontrado... " + socio);
             resultado = true;
         } else {
-            System.out.println("Sócio não encontrado");
             resultado = false;
         }
         return resultado;
@@ -98,11 +102,11 @@ public class CadastroDAO {
         String nrCart = String.valueOf(numeroCarteirinha);
         boolean encontrado = false;
         for (String line : textoSeparado) {
-            if (!line.contains(" Nª carteirinha: " + nrCart) && line.contains("Nome") ) {
-                newContentFile.add(line.replaceAll("\\n",""));
+            if (!line.contains(" Nª carteirinha: " + nrCart) && line.contains("Nome")) {
+                newContentFile.add(line.replaceAll("\\n", ""));
 
 
-            } else if(line.contains(" Nª carteirinha: " + nrCart)){
+            } else if (line.contains(" Nª carteirinha: " + nrCart)) {
                 encontrado = true;
                 System.out.println("Sócio apagado com sucesso!");
             }
@@ -111,7 +115,7 @@ public class CadastroDAO {
 
         arquivo.delete(path, file);
 
-        if(!encontrado){
+        if (!encontrado) {
             System.out.println("Sócio não encontrado");
         }
 
