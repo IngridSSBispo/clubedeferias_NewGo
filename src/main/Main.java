@@ -1,11 +1,13 @@
 package main;
+
 import main.dominio.Socio;
 import main.model.CadastroDAO;
+
 import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    public static String MENU = "Menu: ";
+    public static String MENU = "Menu ";
 
     public static void main(String[] args) throws IOException {
 
@@ -14,8 +16,10 @@ public class Main {
         int opcao = 0;
 
         while (aux) {
-
+            System.out.println("-----------------------------------------------------------------");
             System.out.println(MENU);
+            System.out.println("-----------------------------------------------------------------");
+
             System.out.println("1. Cadastrar novo sócio");
             System.out.println("2. Consultar sócio");
             System.out.println("3. Atualizar cadastro do sócio");
@@ -71,7 +75,7 @@ public class Main {
         String numeroCPF = scanner.next();
         System.out.print("Digite o RG do sócio:  ");
         String RG = scanner.next();
-        Socio novoSocio = new Socio(nome, numeroCPF,RG);
+        Socio novoSocio = new Socio(nome, numeroCPF, RG);
         CadastroDAO cadastroDAO = new CadastroDAO();
         cadastroDAO.create(novoSocio);
 
@@ -80,10 +84,12 @@ public class Main {
 
     public static void consulta() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o nome ou CPF do sócio: ");
-        String numeroCPF = scanner.next();
+        System.out.print("Digite o nome ou documento do sócio: ");
+        String pesquisa = scanner.next();
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.findByInfo(numeroCPF, "cpf");
+        cadastroDAO.findByInfo(pesquisa, "cpf");
+        cadastroDAO.findByInfo(pesquisa, "RG");
+        cadastroDAO.findByInfo(pesquisa, "nome");
 
 
     }
