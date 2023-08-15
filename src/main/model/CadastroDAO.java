@@ -1,15 +1,17 @@
 package main.model;
+
 import main.dominio.Socio;
 import main.io.Arquivo;
+
 import java.io.*;
 import java.util.ArrayList;
 
-public class CadastroDAO implements InterfaceDAO {
+public class CadastroDAO {
 
-    String path = "C:\\Users\\Ingrid Bispo\\Desktop\\";
+    String path = "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\";
     String fileName = "arquivo.txt";
 
-    @Override
+
     public void create(Socio socio) throws IOException {
         System.out.println("nome: " + socio.getNome());
         System.out.println("CPF: " + socio.getNumeroCPF());
@@ -23,12 +25,12 @@ public class CadastroDAO implements InterfaceDAO {
         Arquivo arquivo = new Arquivo();
         String content = "";
         content = "Nome: " + socio.getNome() + " | CPF: " + socio.getNumeroCPF() + " | Nª carteirinha: " + socio.getNumeroCarteirinha();
-        arquivo.create(path+fileName, content);
+        arquivo.create(path + fileName, content);
 
 
     }
 
-    @Override
+
     public void read(String path, String name) {
         System.out.println("Iniciando leitura!");
 
@@ -40,9 +42,10 @@ public class CadastroDAO implements InterfaceDAO {
     }
 
     /**
-     *  procura de acordo com o parametro informado
+     * procura de acordo com o parametro informado
+     *
      * @param info qualquer informacao que esteja contida no arquivo de texto
-     *  **/
+     **/
     public boolean findByInfo(String info) {
         boolean resultado;
         Arquivo arquivo = new Arquivo();
@@ -60,7 +63,7 @@ public class CadastroDAO implements InterfaceDAO {
 
         if (socio != "") {
             System.out.print("Sócio encontrado: " + socio);
-            resultado =true;
+            resultado = true;
         } else {
             System.out.println("Sócio não encontrado");
             resultado = false;
@@ -95,7 +98,7 @@ public class CadastroDAO implements InterfaceDAO {
     }
 
 
-    public void atualizaByNrCard(int numeroCarteirinha, String path, String file, String nmSocio,String cpfSocio) throws IOException {
+    public void atualizaByNrCard(int numeroCarteirinha, String path, String file, String nmSocio, String cpfSocio) throws IOException {
         Arquivo arquivo = new Arquivo();
         String conteudo = arquivo.read(path, file);
 
@@ -126,20 +129,6 @@ public class CadastroDAO implements InterfaceDAO {
         System.out.println("Sócio atualizado com sucesso!");
     }
 
-
-    @Override
-    public void update(int numeroCarteirinha) {
-
-
-
-    }
-
-
-    @Override
-    public void delete(int numeroCarteirinha) {
-
-
-    }
 
 }
 
