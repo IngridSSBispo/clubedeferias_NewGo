@@ -89,8 +89,8 @@ public class CadastroDAO {
         String nrCart = String.valueOf(numeroCarteirinha);
 
         for (String line : textoSeparado) {
-            if (!line.contains(" Nª carteirinha: " + nrCart)) {
-                newContentFile.add(line);
+            if (!line.contains(" Nª carteirinha: " + nrCart) && line.contains("Nome") ) {
+                newContentFile.add(line.replaceAll("\\n",""));
             }
         }
 
