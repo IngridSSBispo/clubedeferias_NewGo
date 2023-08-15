@@ -1,11 +1,8 @@
 package main.model;
-
 import main.dominio.Socio;
 import main.io.Arquivo;
-
 import java.io.*;
 import java.util.ArrayList;
-
 public class CadastroDAO {
 
     String path = "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\";
@@ -87,16 +84,24 @@ public class CadastroDAO {
         ArrayList<String> newContentFile = new ArrayList<String>();
 
         String nrCart = String.valueOf(numeroCarteirinha);
-
+        boolean encontrado = false;
         for (String line : textoSeparado) {
             if (!line.contains(" Nª carteirinha: " + nrCart) && line.contains("Nome") ) {
                 newContentFile.add(line.replaceAll("\\n",""));
+
+
+            } else if(line.contains(" Nª carteirinha: " + nrCart)){
+                encontrado = true;
+                System.out.println("Sócio apagado com sucesso!");
             }
+
         }
 
-        System.out.println(newContentFile);
-
         arquivo.delete(path, file);
+
+        if(!encontrado){
+            System.out.println("Sócio não encontrado");
+        }
 
         for (String line : newContentFile) {
             arquivo.create(path + file, line);
