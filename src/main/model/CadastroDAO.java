@@ -11,11 +11,11 @@ public class CadastroDAO {
     String path = "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\";
     String fileName = "arquivo.txt";
 
-
     public void create(Socio socio) throws IOException {
         System.out.println("nome: " + socio.getNome());
         System.out.println("CPF: " + socio.getNumeroCPF());
-        System.out.println("Nº da carteirinha: " + socio.getNumeroCarteirinha());
+//      System.out.println("Nº da carteirinha: " + socio.getNumeroCarteirinha());
+
 
         System.out.println("Cadastro realizado com sucesso!");
 
@@ -24,20 +24,27 @@ public class CadastroDAO {
 
         Arquivo arquivo = new Arquivo();
         String content = "";
-        content = "Nome: " + socio.getNome() + " | CPF: " + socio.getNumeroCPF() + " | Nª carteirinha: " + socio.getNumeroCarteirinha();
+        content = "Nome: " + socio.getNome() + " | CPF: " + socio.getNumeroCPF() + " | Nª carteirinha: " + getNextID();
+        System.out.println("-------------" + content);
         arquivo.create(path + fileName, content);
 
 
     }
 
-
-    public void read(String path, String name) {
-        System.out.println("Iniciando leitura!");
-
+    public int getNextID() {
+        int resultado = 0;
         Arquivo arquivo = new Arquivo();
-        arquivo.read(path, name);
+        String conteudo = arquivo.read(path, fileName);
 
-        System.out.println("leitura feita com sucesso!");
+        //Para separar as linhas do arquivo com ";"
+        String[] textoSeparado = conteudo.split(";");
+
+        for (String linha : textoSeparado) {
+            resultado++;
+        }
+
+
+        return resultado;
 
     }
 
@@ -82,7 +89,7 @@ public class CadastroDAO {
         String nrCart = String.valueOf(numeroCarteirinha);
 
         for (String line : textoSeparado) {
-            if (!line.contains(nrCart)) {
+            if (!line.contains(" Nª carteirinha: " + nrCart)) {
                 newContentFile.add(line);
             }
         }
