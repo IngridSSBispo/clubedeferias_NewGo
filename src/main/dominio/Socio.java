@@ -1,8 +1,5 @@
 package main.dominio;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class Socio {
 
     private String nome;
@@ -10,14 +7,15 @@ public class Socio {
     private String RG;
 
     public Socio(String nome, String numeroCPF, String RG) {
-        this.nome = nome;
-        this.RG = RG;
+
+
         if (isValidCPF(numeroCPF)) {
             this.numeroCPF = numeroCPF;
         } else {
             throw new IllegalArgumentException("CPF inválido");
         }
-
+        setNome(nome);
+        setNumeroRG(RG);
     }
 
     public String getNome() {
@@ -25,6 +23,9 @@ public class Socio {
     }
 
     public void setNome(String nome) {
+        if (!nome.matches("[a-zA-Z\\s]+")) {
+            throw new IllegalArgumentException("Nome deve conter apenas caracteres alfabéticos!");
+        }
         this.nome = nome;
     }
 
@@ -37,6 +38,9 @@ public class Socio {
     }
 
     public void setNumeroRG(String numeroRG) {
+        if (!isValidRG(numeroRG)) {
+            throw new IllegalArgumentException("RG inválido");
+        }
         this.RG = numeroRG;
     }
 
@@ -52,5 +56,16 @@ public class Socio {
 
         return true;
     }
-}
 
+    private boolean isValidRG(String numeroRG) {
+
+        numeroRG = numeroRG.replaceAll("[^0-9]", "");
+
+        if (numeroRG.length() != 9 &&numeroRG.length() !=12) {
+            return false;
+        }
+        return true;
+
+    }
+
+}
