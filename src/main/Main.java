@@ -103,7 +103,6 @@ public class Main {
         String nr = String.valueOf(numeroCarteirinha);
 
 
-        // System.getProperty("user.home");
 
 
 
@@ -118,11 +117,11 @@ public class Main {
             String RG = scanner.nextLine();
             CadastroDAO cadastroDAO = new CadastroDAO();
 
+            Socio socio = new Socio(nome,numeroCPF,RG);
+
             cadastroDAO.atualizaByNrCard(
                     numeroCarteirinha,
-                    nome,
-                    numeroCPF,
-                    RG
+                   socio
                 );
 
         }
