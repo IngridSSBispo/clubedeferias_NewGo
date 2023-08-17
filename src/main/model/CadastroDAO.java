@@ -1,15 +1,13 @@
 package main.model;
-
 import main.dominio.Socio;
 import main.io.Arquivo;
-
 import java.io.*;
 import java.util.ArrayList;
 
 public class CadastroDAO {
 
-    String path = "";
-    String fileName = "arquivo.txt";
+    String path =  System.getProperty("user.dir") + "\\data\\";
+    String fileName = "dados.txt";
 
     public void create(Socio socio) throws IOException {
         System.out.println("nome: " + socio.getNome());
@@ -73,7 +71,7 @@ public class CadastroDAO {
         } else if (chave.equals("nome")) {
             busca = "Nome: " + info;
         } else {
-            busca = "asdasd";
+            busca = "inválido";
         }
 
         for (String linha : textoSeparado) {
@@ -92,9 +90,9 @@ public class CadastroDAO {
 
     }
 
-    public void deleteByNrCard(int numeroCarteirinha, String path, String file) throws IOException {
+    public void deleteByNrCard(int numeroCarteirinha) throws IOException {
         Arquivo arquivo = new Arquivo();
-        String conteudo = arquivo.read(path, file);
+        String conteudo = arquivo.read(path, fileName);
 
         String[] textoSeparado = conteudo.split(";");
         ArrayList<String> newContentFile = new ArrayList<String>();
@@ -113,22 +111,22 @@ public class CadastroDAO {
 
         }
 
-        arquivo.delete(path, file);
+        arquivo.delete(path, fileName);
 
         if (!encontrado) {
             System.out.println("Sócio não encontrado");
         }
 
         for (String line : newContentFile) {
-            arquivo.create(path + file, line);
+            arquivo.create(path + fileName, line);
         }
 
     }
 
 
-    public void atualizaByNrCard(int numeroCarteirinha, String path, String file, String nmSocio, String cpfSocio) throws IOException {
+    public void atualizaByNrCard(int numeroCarteirinha, String nmSocio, String cpfSocio,String RG) throws IOException {
         Arquivo arquivo = new Arquivo();
-        String conteudo = arquivo.read(path, file);
+        String conteudo = arquivo.read(path, fileName);
 
         String[] textoSeparado = conteudo.split(";");
 
@@ -139,8 +137,11 @@ public class CadastroDAO {
         for (String linha : textoSeparado) {
             if (linha.contains(" Nª carteirinha: " + nrCart)) {
                 // Atualizar os dados do sócio na linha correspondente
-                String novoConteudo = "Nome: " + nmSocio + " | CPF: " + cpfSocio + "| Nª carteirinha: " + numeroCarteirinha;
 
+                String novoConteudo = "Nome: " + nmSocio
+                        + " | RG: " + RG
+                        + " | CPF: " + cpfSocio
+                        + " | Nª carteirinha: " + numeroCarteirinha;
                 newContentFile.add(novoConteudo);
             } else {
                 newContentFile.add(linha);
@@ -148,10 +149,10 @@ public class CadastroDAO {
         }
 
         // Limpar e reescrever o arquivo
-        arquivo.delete(path, file);
+        arquivo.delete(path, fileName);
 
         for (String line : newContentFile) {
-            arquivo.create(path + file, line);
+            arquivo.create(path + fileName, line);
         }
 
         System.out.println("Sócio atualizado com sucesso!");
