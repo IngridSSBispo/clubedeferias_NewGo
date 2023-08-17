@@ -1,4 +1,4 @@
-package main.dominio;
+package infrastructure;
 
 public class Socio {
 

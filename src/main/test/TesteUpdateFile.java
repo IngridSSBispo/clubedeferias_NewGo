@@ -1,7 +1,7 @@
-package main.teste;
+package main.test;
 
-import main.dominio.Socio;
-import main.model.CadastroDAO;
+import infrastructure.Socio;
+import domain.CadastroDAO;
 
 import java.io.IOException;
 

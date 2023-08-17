@@ -1,6 +1,6 @@
-package main.model;
-import main.dominio.Socio;
-import main.io.Arquivo;
+package domain;
+import infrastructure.Socio;
+import infrastructure.Arquivo;
 import java.io.*;
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
-package main.teste;
+package main.test;
 
-import main.model.CadastroDAO;
+import domain.CadastroDAO;
 
 import java.io.IOException;
 

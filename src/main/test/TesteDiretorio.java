@@ -1,4 +1,4 @@
-package main.teste;
+package main.test;
 
 public class TesteDiretorio {
 

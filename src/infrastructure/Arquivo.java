@@ -1,4 +1,4 @@
-package main.io;
+package infrastructure;
 import java.io.*;
 import java.util.Scanner;
 

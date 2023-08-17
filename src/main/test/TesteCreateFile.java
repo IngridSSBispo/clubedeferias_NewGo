@@ -1,6 +1,6 @@
-package main.teste;
-import main.dominio.Socio;
-import main.model.CadastroDAO;
+package main.test;
+import infrastructure.Socio;
+import domain.CadastroDAO;
 import java.io.IOException;
 
 public class TesteCreateFile {
