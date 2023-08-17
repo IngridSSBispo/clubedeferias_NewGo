@@ -120,11 +120,10 @@ public class Main {
 
             cadastroDAO.atualizaByNrCard(
                     numeroCarteirinha,
-                    "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\",
-                    "arquivo.txt",
                     nome,
-                    numeroCPF
-                    );
+                    numeroCPF,
+                    RG
+                );
 
         }
 
@@ -135,7 +134,7 @@ public class Main {
         System.out.print("Digite o número da carteirinha: ");
         int numeroCarteirinha = scanner.nextInt();
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.deleteByNrCard(numeroCarteirinha, "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\", "arquivo.txt");
+        cadastroDAO.deleteByNrCard(numeroCarteirinha);
 
 
     }
