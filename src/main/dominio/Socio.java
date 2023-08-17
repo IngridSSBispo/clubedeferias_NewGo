@@ -23,8 +23,8 @@ public class Socio {
     }
 
     public void setNome(String nome) {
-        if (!nome.matches("[a-zA-Z\\s]+")) {
-            throw new IllegalArgumentException("Nome deve conter apenas caracteres alfabéticos!");
+        if (!nome.matches("[\\p{L}\\s]+")) {
+            throw new IllegalArgumentException("Nome deve conter apenas caracteres alfabéticos");
         }
         this.nome = nome;
     }
