@@ -1,8 +1,6 @@
 package main;
-
 import main.dominio.Socio;
 import main.model.CadastroDAO;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -104,6 +102,11 @@ public class Main {
         CadastroDAO dao = new CadastroDAO();
         String nr = String.valueOf(numeroCarteirinha);
 
+
+        // System.getProperty("user.home");
+
+
+
         boolean resultado = dao.findByInfo(nr, "carteirinha");
         if (resultado) {
 
@@ -120,7 +123,8 @@ public class Main {
                     "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\",
                     "arquivo.txt",
                     nome,
-                    numeroCPF);
+                    numeroCPF
+                    );
 
         }
 
