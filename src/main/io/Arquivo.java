@@ -1,4 +1,5 @@
 package main.io;
+
 import java.io.*;
 import java.util.Scanner;
 
@@ -7,8 +8,10 @@ import java.util.Scanner;
  **/
 public class Arquivo {
 
-    public void create(String path, String content) throws IOException {
-        FileWriter escritor = new FileWriter(path, true);
+    public void create(String fileName, String content) throws IOException {
+        String currentDirectory = System.getProperty("user.dir");
+
+        FileWriter escritor = new FileWriter(currentDirectory+"\\data\\" + fileName, true);
         escritor.write(content);
         escritor.write("; \n");
         escritor.close();
