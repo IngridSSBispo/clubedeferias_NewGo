@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class CadastroDAO {
 
-    String path = "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\";
+    String path = "";
     String fileName = "arquivo.txt";
 
     public void create(Socio socio) throws IOException {
