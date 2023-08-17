@@ -34,7 +34,7 @@ public class Main {
             switch (opcao) {
 
                 case 0:
-                    System.out.printf("Saindo");
+                    System.out.println("Saindo...");
                     aux = false;
                     break;
 
