@@ -124,7 +124,7 @@ public class CadastroDAO {
     }
 
 
-    public void atualizaByNrCard(int numeroCarteirinha, String nmSocio, String cpfSocio,String RG) throws IOException {
+    public void atualizaByNrCard(int numeroCarteirinha,Socio socio) throws IOException {
         Arquivo arquivo = new Arquivo();
         String conteudo = arquivo.read(path, fileName);
 
@@ -138,9 +138,9 @@ public class CadastroDAO {
             if (linha.contains(" Nª carteirinha: " + nrCart)) {
                 // Atualizar os dados do sócio na linha correspondente
 
-                String novoConteudo = "Nome: " + nmSocio
-                        + " | RG: " + RG
-                        + " | CPF: " + cpfSocio
+                String novoConteudo = "Nome: " + socio.getNome()
+                        + " | RG: " + socio.getNumeroRG()
+                        + " | CPF: " + socio.getNumeroCPF()
                         + " | Nª carteirinha: " + numeroCarteirinha;
                 newContentFile.add(novoConteudo);
             } else {
