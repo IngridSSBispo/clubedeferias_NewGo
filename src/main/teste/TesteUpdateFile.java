@@ -11,10 +11,9 @@ public class TesteUpdateFile {
 
         CadastroDAO dao = new CadastroDAO();
         dao.atualizaByNrCard(
-                905321,
-                "C:\\Users\\ingri\\OneDrive\\Área de Trabalho\\",
-                "arquivo.txt",
+                2,
                 "Vivian",
-                "789456");
+                "123456888-25",
+                "23456765-9");
     }
 }
