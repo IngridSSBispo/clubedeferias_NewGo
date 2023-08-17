@@ -1,6 +1,8 @@
-package main;
-import main.dominio.Socio;
-import main.model.CadastroDAO;
+package application;
+
+import infrastructure.Socio;
+import domain.CadastroDAO;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -84,11 +86,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Digite o nome ou documento do sócio: ");
         String pesquisa = scanner.next();
+        boolean pesquisaCPF = false, pesquisaRG = false, pesquisaNome = false;
         CadastroDAO cadastroDAO = new CadastroDAO();
-        cadastroDAO.findByInfo(pesquisa, "cpf");
-        cadastroDAO.findByInfo(pesquisa, "RG");
-        cadastroDAO.findByInfo(pesquisa, "nome");
+        pesquisaCPF = cadastroDAO.findByInfo(pesquisa, "cpf");
+        pesquisaRG = cadastroDAO.findByInfo(pesquisa, "RG");
+        pesquisaNome = cadastroDAO.findByInfo(pesquisa, "nome");
 
+        if (!pesquisaCPF && !pesquisaRG && !pesquisaNome){
+            System.out.println("Sócio não encontrado!");
+        }
 
     }
 
@@ -103,9 +109,6 @@ public class Main {
         String nr = String.valueOf(numeroCarteirinha);
 
 
-
-
-
         boolean resultado = dao.findByInfo(nr, "carteirinha");
         if (resultado) {
 
@@ -117,13 +120,15 @@ public class Main {
             String RG = scanner.nextLine();
             CadastroDAO cadastroDAO = new CadastroDAO();
 
-            Socio socio = new Socio(nome,numeroCPF,RG);
+            Socio socio = new Socio(nome, numeroCPF, RG);
 
             cadastroDAO.atualizaByNrCard(
                     numeroCarteirinha,
-                   socio
-                );
+                    socio
+            );
 
+        } else {
+            System.out.println("Sócio não encontrado!");
         }
 
     }
